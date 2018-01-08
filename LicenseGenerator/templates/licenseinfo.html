@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ company.name }} - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Company</a></li>
+  <li class="breadcrumb-item active">{{ company.name }}</li>
+{% endblock %}
+
+{% block content %}
+  <div class="mb-4">
+    <a href="{% url 'new_company_licenseinfo' company.pk %}" class="btn btn-primary">New Product</a>
+  </div>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Product</th>
+        <th>Number of Users</th>
+        <th>Trial period(Days)</th>
+        <th>Licence Details</th>
+		<th>Updated By</th>
+        <th>Updated Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for license in company.licenseinformations.all %}
+        <tr>
+          <td>{{ license.product }}</td>
+          <td>{{ license.noofusers }}</td>
+          <td>{{ license.noofdaystrial }}</td>
+		  <td>{{ license.license }}</td>
+		  <td>{{ license.updated_by.username }}</td>
+          <td>{{ license.updated_at }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

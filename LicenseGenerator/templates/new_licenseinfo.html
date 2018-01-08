@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Add new product license information for {{ company.name }}{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Company</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'company_licenseinfo' company.pk %}">{{ company.name }}</a></li>
+  <li class="breadcrumb-item active">New Product</li>
+{% endblock %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+	{% include 'includes/form.html' %}
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+{% endblock %}
