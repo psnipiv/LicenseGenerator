@@ -1,10 +1,10 @@
 from django.urls import reverse
 from django.test import TestCase
 from django.urls import resolve
-from .views import home, company_licenseinfo,new_company_licenseinfo
-from .models import Company,LicenseInformation
+from ..views import home, company_licenseinfo,new_company_licenseinfo
+from ..models import Company,LicenseInformation
 from django.contrib.auth.models import User
-from .forms import NewLicenseInformationForm
+from ..forms import NewLicenseInformationForm
 
 
 class HomeTests(TestCase):
