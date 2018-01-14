@@ -1,3 +1,7 @@
 .navbar-brand {
   font-family: 'Berkshire Swash', cursive;
 }
+
+body {
+  background-image: url(../img/congruent_pentagon.png);
+}

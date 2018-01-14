@@ -13,26 +13,26 @@
   <div class="mb-4">
     <a href="{% url 'new_company_licenseinfo' company.pk %}" class="btn btn-primary">New Product</a>
   </div>
-  <table class="table">
+  <table class="table table-hover">
     <thead class="thead-inverse">
       <tr>
-        <th>Product</th>
-        <th>Number of Users</th>
-        <th>Trial period(Days)</th>
-        <th>Licence Details</th>
-		<th>Updated By</th>
-        <th>Updated Date</th>
+        <th scope="col">Product</th>
+        <th scope="col">Number of Users</th>
+        <th scope="col">Trial period(Days)</th>
+        <th scope="col">Licence Details</th>
+		<th scope="col">Updated By</th>
+        <th scope="col">Updated Date</th>
       </tr>
     </thead>
     <tbody>
       {% for license in company.licenseinformations.all %}
-        <tr>
-          <td>{{ license.product }}</td>
-          <td>{{ license.noofusers }}</td>
-          <td>{{ license.noofdaystrial }}</td>
-		  <td>{{ license.license }}</td>
-		  <td>{{ license.updated_by.username }}</td>
-          <td>{{ license.updated_at }}</td>
+        <tr class="table-light">
+          <td class="align-middle">{{ license.product }}</td>
+          <td class="align-middle">{{ license.noofusers }}</td>
+          <td class="align-middle">{{ license.noofdaystrial }}</td>
+		  <td class="align-middle">{{ license.license }}</td>
+		  <td class="align-middle">{{ license.updated_by.username }}</td>
+          <td class="align-middle">{{ license.updated_at }}</td>
         </tr>
       {% endfor %}
     </tbody>
