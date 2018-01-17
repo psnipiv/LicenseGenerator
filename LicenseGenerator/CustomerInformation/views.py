@@ -3,6 +3,7 @@ from CustomerInformation.models import Company,LicenseInformation
 from .forms import NewLicenseInformationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from CustomerInformation.Encryption import Encryption
 
 # Create your views here.
 @login_required
@@ -26,7 +27,8 @@ def new_company_licenseinfo(request, pk):
             licenseinfo.company = company
             licenseinfo.created_by = request.user
             licenseinfo.updated_by = request.user
-            licenseinfo.license = "ABCD-EFGH-1234"
+            eobj = Encryption(name=licenseinfo.company, product=licenseinfo.product, noofusers=licenseinfo.noofusers, noofdaystrial=licenseinfo.noofdaystrial)
+            licenseinfo.license = Encryption.encrypt(eobj)
             licenseinfo.save()
             return redirect('company_licenseinfo', pk=company.pk)
     else:
